@@ -10,12 +10,15 @@ RUN apt update && apt install -y \
     curl \
     ca-certificates \
     locales \
- && apt clean
+ && rm -rf /var/lib/apt/lists/*
 
 # ユーザー作成（rootでもいいけど一応）
 RUN useradd -m dev && \
     echo "dev ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
+RUN locale-gen ja_JP.UTF-8
+
+# user => dev (not root)
 USER dev
 WORKDIR /home/dev
 
@@ -23,9 +26,8 @@ WORKDIR /home/dev
 RUN curl -fLo /home/dev/.vim/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-#
-RUN sudo locale-gen ja_JP.UTF-8
+# vimrcをコンテナにコピーして導入
 COPY vimrc /home/dev/.vimrc
+RUN vim +'PlugInstall --sync' +'qa!' +qa
 
-RUN apt install -y neovim nodejs npm ripgrep && apt clean
 
