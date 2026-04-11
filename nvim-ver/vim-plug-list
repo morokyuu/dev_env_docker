@@ -1,0 +1,28 @@
+
+call plug#begin()
+
+" List your plugins here
+Plug 'tpope/vim-sensible'
+Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf'
+Plug 'Yggdroot/indentLine' "インデントライン表示
+Plug 'mechatroner/rainbow_csv' "csvを見やすくする
+Plug 'vim-airline/vim-airline' "フッダ改良
+Plug 'lambdalisue/vim-batter' "ステータスライン、タブライン
+Plug 'tpope/vim-commentary' "まとめてコメントアウトのON/OFFができるプラグイン
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#end()
+
+
+coc.nvim
+nodejs >= 16.18.0が必要
+
+
+snapから入れたら0.12.0が入る ->coc使える
+sudo snap install nvim --classic
+
+
+
+
+
+

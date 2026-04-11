@@ -1,0 +1,84 @@
+set nocompatible
+syntax enable
+filetype plugin indent on
+
+set number
+set cursorline
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smartindent
+set hidden
+set nowrap
+
+set background=dark
+if has('termguicolors')
+  set termguicolors
+endif
+
+let mapleader=" "
+
+call plug#begin('~/.vim/plugged')
+
+" カラースキーム
+Plug 'joshdick/onedark.vim'
+
+" ステータスバー（強い）
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" アイコン
+Plug 'ryanoasis/vim-devicons'
+
+" ファイルツリー
+Plug 'preservim/nerdtree'
+
+" Git
+Plug 'tpope/vim-fugitive'
+
+" Git差分
+Plug 'airblade/vim-gitgutter'
+
+" 検索
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
+" コメント
+Plug 'tpope/vim-commentary'
+
+" 自動括弧
+Plug 'jiangmiao/auto-pairs'
+
+call plug#end()
+
+colorscheme onedark
+
+" =====================
+" airline設定
+" =====================
+let g:airline_theme='onedark'
+let g:airline_powerline_fonts = 1
+
+" =====================
+" NERDTree設定
+" =====================
+let NERDTreeShowHidden=1
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ }
+
+" =====================
+" キーマップ
+" =====================
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-p> :Files<CR>
+
+" Git
+nnoremap <leader>gs :Git<CR>
+nnoremap <leader>gc :Git commit<CR>
+nnoremap <leader>ga :Git add %<CR>
+
+" ハイライト消す
+nnoremap <Esc><Esc> :nohlsearch<CR>

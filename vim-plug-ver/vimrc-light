@@ -1,0 +1,47 @@
+call plug#begin('~/.vim/plugged')
+
+" 基本改善
+Plug 'tpope/vim-sensible'
+Plug 'preservim/nerdtree'
+Plug 'Yggdroot/indentLine' "インデントライン表示
+Plug 'mechatroner/rainbow_csv' "csvを見やすくする
+"Plug 'vim-airline/vim-airline' "フッダ改良
+" Git
+Plug 'tpope/vim-fugitive'
+
+" ステータスライン
+Plug 'itchyny/lightline.vim'
+
+" ファイル検索
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
+" Git
+Plug 'tpope/vim-fugitive'
+
+" コメントアウト
+Plug 'tpope/vim-commentary'
+
+" 自動括弧
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'vim-scripts/AutoComplPop'
+
+" Color	Theme
+Plug 'morhetz/gruvbox'
+Plug 'joshdick/onedark.vim'
+
+call plug#end()
+
+
+" colorscheme
+syntax enable
+set background=dark
+" select there
+" colorscheme gruvbox
+colorscheme onedark
+colorscheme desert
+set termguicolors
+
+
+
