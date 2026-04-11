@@ -29,6 +29,13 @@ if has('termguicolors')
   set termguicolors
 endif
 
+" すこし補完強化
+set complete+=k
+set complete=.,w,b,u,t,i
+set wildmenu
+set pumheight=10
+set completeopt=menuone,noinsert,noselect
+
 " =========================
 " vim-plug
 " =========================
