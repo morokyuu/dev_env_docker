@@ -20,6 +20,8 @@ RUN useradd -m dev && \
 
 # 日本語使えるようにする
 RUN locale-gen ja_JP.UTF-8
+ENV LANG=ja_JP.UTF-8
+ENV LC_ALL=ja_JP.UTF-8
 
 # user => dev (not root)
 USER dev
