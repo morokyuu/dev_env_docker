@@ -36,6 +36,14 @@ set wildmenu
 set pumheight=10
 set completeopt=menuone,noinsert,noselect
 
+" grepをripgrepへ差し替え
+set grepprg=rg\ --vimgrep\ --smart-case
+" grep
+nnoremap <leader>f :grep
+nnoremap <leader>fw :grep <C-r><C-w> .
+" quickfix
+nnoremap <leader>q :copen<CR>
+
 " =========================
 " vim-plug
 " =========================
