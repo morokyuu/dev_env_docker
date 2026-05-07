@@ -1,0 +1,114 @@
+" =========================
+" 基本設定
+" =========================
+set nocompatible
+syntax enable
+filetype plugin indent on
+set encoding=utf-8
+set fileencoding=utf-8
+
+set number              " 行番号
+set cursorline          " カーソル行ハイライト
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smartindent
+set hidden
+set nowrap
+set clipboard=unnamedplus
+
+" 検索
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+" 色
+set background=dark
+if has('termguicolors')
+  set termguicolors
+endif
+
+" すこし補完強化
+set complete+=k
+set complete=.,w,b,u,t,i
+set wildmenu
+set pumheight=10
+set completeopt=menuone,noinsert,noselect
+
+" grepをripgrepへ差し替え
+set grepprg=rg\ --vimgrep\ --smart-case
+" grep
+nnoremap <leader>f :grep
+nnoremap <leader>fw :grep <C-r><C-w> .
+" quickfix
+nnoremap <leader>q :copen<CR>
+
+" =========================
+" vim-plug
+" =========================
+call plug#begin('~/.vim/plugged')
+
+" 基本改善
+Plug 'tpope/vim-sensible'
+Plug 'preservim/nerdtree'
+Plug 'Yggdroot/indentLine' "インデントライン表示
+Plug 'mechatroner/rainbow_csv' "csvを見やすくする
+
+" 見た目
+Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
+
+" ステータスライン
+Plug 'itchyny/lightline.vim'
+
+" ファイル検索
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
+" Git
+Plug 'tpope/vim-fugitive'
+
+" ファイルツリー
+Plug 'preservim/nerdtree'
+
+" 自動括弧
+Plug 'jiangmiao/auto-pairs'
+
+" 補完
+Plug 'vim-scripts/AutoComplPop'
+
+call plug#end()
+
+" =========================
+" カラースキーム
+" =========================
+" colorscheme onedark
+autocmd VimEnter * colorscheme onedark
+
+" =========================
+" キーマップ
+" =========================
+let mapleader = " "
+
+" NERDTree
+nnoremap <C-n> :NERDTreeToggle<CR>
+
+" fzf
+nnoremap <C-p> :Files<CR>
+nnoremap <Leader>g :GFiles<CR>
+
+" 検索ハイライト消す
+nnoremap <Esc><Esc> :nohlsearch<CR>
+
+" =========================
+" lightline設定
+" =========================
+let g:lightline = {
+      \ 'colorscheme': 'onedark',
+      \ }
+
+" =========================
+" NERDTree設定
+" =========================
+let NERDTreeShowHidden=1

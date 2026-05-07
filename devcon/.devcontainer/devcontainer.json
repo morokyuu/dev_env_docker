@@ -1,0 +1,24 @@
+{
+  "name": "ubuntu-vim-dev",
+  "build": {
+    "dockerfile": "../Dockerfile"
+  },
+
+  "remoteUser": "dev",
+
+  "workspaceFolder": "/workspace",
+
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind"
+  ],
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.remote-containers",
+        "eamodio.gitlens",
+        "vscodevim.vim"
+      ]
+    }
+  }
+}
