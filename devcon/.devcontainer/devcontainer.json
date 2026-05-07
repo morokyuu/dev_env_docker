@@ -8,14 +8,11 @@
 
   "workspaceFolder": "/workspace",
 
-  "mounts": [
-    "source=${localWorkspaceFolder},target=/workspace,type=bind"
-  ],
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
 
   "customizations": {
     "vscode": {
       "extensions": [
-        "ms-vscode.remote-containers",
         "eamodio.gitlens",
         "vscodevim.vim"
       ]

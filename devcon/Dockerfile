@@ -9,9 +9,11 @@ RUN apt update && apt install -y \
     vim \
     git \
     curl \
+    wget \
     ca-certificates \
     locales \
     ripgrep \
+    fzf \
  && rm -rf /var/lib/apt/lists/*
 
 # ユーザー作成（rootでもいいけど一応）
@@ -25,7 +27,7 @@ ENV LC_ALL=ja_JP.UTF-8
 
 # user => dev (not root)
 USER dev
-WORKDIR /home/dev
+WORKDIR /workspace
 
 # vim-plugインストール
 RUN curl -fLo /home/dev/.vim/autoload/plug.vim --create-dirs \
