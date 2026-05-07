@@ -1,0 +1,104 @@
+-- ========================
+-- lazy.nvim bootstrap
+-- ========================
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git", "clone", "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    lazypath
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- ========================
+-- 基本設定
+-- ========================
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.termguicolors = true
+vim.g.mapleader = " "
+
+-- ========================
+-- plugins
+-- ========================
+require("lazy").setup({
+
+  -- カラースキーム
+  { "navarasu/onedark.nvim" },
+
+  -- ステータスライン
+  { "nvim-lualine/lualine.nvim" },
+
+  -- ファイルツリー
+  { "nvim-tree/nvim-tree.lua" },
+
+  -- アイコン
+  { "nvim-tree/nvim-web-devicons" },
+
+  -- fuzzy finder
+  { "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" }
+  },
+
+  -- treesitter（シンタックス強化）
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+
+  -- LSP
+  { "neovim/nvim-lspconfig" },
+
+  -- 補完
+  { "hrsh7th/nvim-cmp" },
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "hrsh7th/cmp-buffer" },
+  { "hrsh7th/cmp-path" },
+
+})
+
+-- ========================
+-- 見た目
+-- ========================
+require("onedark").setup()
+require("onedark").load()
+
+require("lualine").setup()
+
+require("nvim-tree").setup()
+
+-- ========================
+-- Telescope
+-- ========================
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<C-p>", builtin.find_files, {})
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+
+-- ========================
+-- LSP
+-- ========================
+local lspconfig = require("lspconfig")
+lspconfig.pyright.setup{}   -- Python
+lspconfig.ts_ls.setup{}     -- JS/TS
+
+-- ========================
+-- nvim-cmp
+-- ========================
+local cmp = require("cmp")
+
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+  }),
+  sources = {
+    { name = "nvim_lsp" },
+    { name = "buffer" },
+  },
+})
+
+-- ========================
+-- キーマップ
+-- ========================
+vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>")

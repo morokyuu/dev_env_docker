@@ -16,22 +16,26 @@ RUN apt update && apt install -y \
 RUN useradd -m dev && \
     echo "dev ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
+
+RUN locale-gen ja_JP.UTF-8
+
+RUN apt install -y nodejs npm ripgrep && apt clean
+RUN npm install -g pyright
+RUN npm install -g typescript typescript-language-server
+
+# Neovim（最新版）インストール
+RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz \
+ && tar xzf nvim-linux64.tar.gz \
+ && mv nvim-linux64 /opt/nvim \
+ && ln -s /opt/nvim/bin/nvim /usr/local/bin/nvim \
+ && rm nvim-linux64.tar.gz
+
 USER dev
 WORKDIR /home/dev
 
-# vim-plugインストール
-RUN curl -fLo /home/dev/.vim/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+RUN mkdir -p /home/dev/.config/nvim 
+COPY init.lua /home/dev/.config/nvim/init.lua
 
-#
-RUN sudo locale-gen ja_JP.UTF-8
-COPY vimrc /home/dev/.vimrc
-
-RUN sudo apt install -y neovim nodejs npm ripgrep && sudo apt clean
-RUN mkdir -p ~/.config/nvim && touch ~/.config/nvim/init.lua
-
-RUN sudo npm install -g pyright
-RUN sudo npm install -g typescript typescript-language-server
 
 
 
