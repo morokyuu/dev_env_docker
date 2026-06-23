@@ -14,7 +14,8 @@
     "vscode": {
       "extensions": [
         "eamodio.gitlens",
-        "vscodevim.vim"
+        "vscodevim.vim",
+        "platformio.platformio-ide"
       ]
     }
   }
