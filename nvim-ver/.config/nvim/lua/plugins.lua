@@ -25,9 +25,20 @@ require("lazy").setup({
     build = ":TSUpdate",
   },
   {
-    "folke/tokyonight.nvim",
+    "navarasu/onedark.nvim",
+    lazy = false,
     priority = 1000,
+    config = function()
+      require("onedark").setup({
+        style = "dark", -- "dark", "darker", "cool", "deep", "warm", "warmer"
+      })
+      require("onedark").load()
+    end,
   },
+--  {
+--    "folke/tokyonight.nvim",
+--    priority = 1000,
+--  },
   {
     "nvim-lualine/lualine.nvim",
     config = function()
@@ -60,7 +71,19 @@ require("lazy").setup({
         },
       })
     end,
-  }
+  },
+  {
+    "windwp/auto-pairs",
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
+  },
 })
 
 

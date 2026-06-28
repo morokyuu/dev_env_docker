@@ -19,4 +19,7 @@ vim.opt.smartcase = true
 vim.opt.incsearch = true
 vim.opt.hlsearch = true
 
+vim.opt.clipboard = "unnamedplus"
+vim.opt.termguicolors = true
+
 vim.cmd.colorscheme("habamax")
