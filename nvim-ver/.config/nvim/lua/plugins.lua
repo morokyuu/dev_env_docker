@@ -24,6 +24,16 @@ require("lazy").setup({
     lazy = false,
     build = ":TSUpdate",
   },
+  {
+    "folke/tokyonight.nvim",
+    priority = 1000,
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      require("lualine").setup()
+    end,
+  }
 })
 
 
