@@ -19,7 +19,11 @@ require("lazy").setup({
   { "williamboman/mason.nvim", config = true },
   { "williamboman/mason-lspconfig.nvim" },
   { "ibhagwan/fzf-lua" },
---  { "nvim-treesitter/nvim-treesitter" },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    build = ":TSUpdate",
+  },
 })
 
 

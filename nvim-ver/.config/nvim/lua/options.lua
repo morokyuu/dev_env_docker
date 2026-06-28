@@ -1,6 +1,6 @@
 -- 行番号
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 -- インデント
 vim.opt.tabstop = 2
@@ -18,3 +18,5 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.incsearch = true
 vim.opt.hlsearch = true
+
+vim.cmd.colorscheme("habamax")
