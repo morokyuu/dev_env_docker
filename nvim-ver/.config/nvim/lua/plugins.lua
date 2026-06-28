@@ -73,11 +73,43 @@ require("lazy").setup({
     end,
   },
   {
-    "windwp/auto-pairs",
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end,
   },
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+
+    config = function()
+      require("nvim-tree").setup({
+        git = {
+          enable = true,
+        },
+
+        renderer = {
+          icons = {
+            show = {
+              file = true,
+              folder = true,
+              folder_arrow = true,
+              git = true,
+            },
+
+            glyphs = {
+              git = {
+                unstaged = "M",
+                staged = "A",
+                untracked = "?",
+                deleted = "D",
+                ignored = "I",
+              },
+            },
+          },
+        },
+      })
+    end,
   },
   {
     "lukas-reineke/indent-blankline.nvim",
