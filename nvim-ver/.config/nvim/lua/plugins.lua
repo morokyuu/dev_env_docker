@@ -25,16 +25,28 @@ require("lazy").setup({
     build = ":TSUpdate",
   },
   {
-    "navarasu/onedark.nvim",
-    lazy = false,
+    "ellisonleao/gruvbox.nvim",
     priority = 1000,
     config = function()
-      require("onedark").setup({
-        style = "dark", -- "dark", "darker", "cool", "deep", "warm", "warmer"
+      vim.opt.termguicolors = true
+      vim.o.background = "dark"
+
+      require("gruvbox").setup({
+        contrast = "hard",
       })
-      require("onedark").load()
+      vim.cmd.colorscheme("gruvbox")
     end,
   },
+-- cursorが消える不具合があるのでやめた
+--  {
+--    "navarasu/onedark.nvim",
+--    lazy = false,
+--    priority = 1000,
+--    config = function()
+--      vim.opt.termguicolors = true
+--      vim.cmd.colorscheme("onedark")
+--    end,
+--  },
 --  {
 --    "folke/tokyonight.nvim",
 --    priority = 1000,
