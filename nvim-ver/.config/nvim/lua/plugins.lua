@@ -91,38 +91,47 @@ require("lazy").setup({
     end,
   },
   {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-
-    config = function()
-      require("nvim-tree").setup({
-        git = {
-          enable = true,
-        },
-
-        renderer = {
-          icons = {
-            show = {
-              file = true,
-              folder = true,
-              folder_arrow = true,
-              git = true,
-            },
-
-            glyphs = {
-              git = {
-                unstaged = "M",
-                staged = "A",
-                untracked = "?",
-                deleted = "D",
-                ignored = "I",
-              },
-            },
-          },
-        },
-      })
-    end,
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
   },
+--  {
+--    "nvim-tree/nvim-tree.lua",
+--    dependencies = { "nvim-tree/nvim-web-devicons" },
+--
+--    config = function()
+--      require("nvim-tree").setup({
+--        git = {
+--          enable = true,
+--        },
+--
+--        renderer = {
+--          icons = {
+--            show = {
+--              file = true,
+--              folder = true,
+--              folder_arrow = true,
+--              git = true,
+--            },
+--
+--            glyphs = {
+--              git = {
+--                unstaged = "M",
+--                staged = "A",
+--                untracked = "?",
+--                deleted = "D",
+--                ignored = "I",
+--              },
+--            },
+--          },
+--        },
+--      })
+--    end,
+--  },
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
