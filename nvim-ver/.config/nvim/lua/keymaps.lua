@@ -23,3 +23,7 @@ vim.keymap.set("n", "<leader>fg", fzf.live_grep)
 vim.keymap.set("n", "<leader>fb", fzf.buffers)
 vim.keymap.set("n", "<leader>fh", fzf.help_tags)
 
+vim.api.nvim_create_user_command("E", function()
+  vim.cmd("Neotree focus reveal")
+end, {})
+
