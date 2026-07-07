@@ -1,0 +1,9 @@
+[alias]
+	graph = log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short
+[user]
+	email = nano@example.com
+	name = nano
+[init]
+	defaultBranch = main
+[core]
+	editor = vim
